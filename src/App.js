@@ -1,8 +1,35 @@
 import "./App.css";
-import { HashRouter, NavLink, Route, Routes } from "react-router-dom";
+import {
+  HashRouter,
+  NavLink,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import React from "react";
+
+const Logout = () => {
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate("/login");
+  };
+
+  return <button onClick={redirect}>logout</button>;
+};
 
 const Todo = () => {
-  return <p>這是 Todo 頁面</p>;
+  React.useEffect(() => {
+    console.log("inside effect");
+  }, []);
+
+  console.log("outside effect but inside Todo");
+
+  return (
+    <div>
+      <p>這是 Todo 頁面</p>
+      <Logout />
+    </div>
+  );
 };
 const Login = () => {
   return <p>這是登入頁面</p>;
